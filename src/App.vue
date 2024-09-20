@@ -13,12 +13,17 @@ export default {
         return {
         count: 0
         }
-    } 
+    } ,
+    methods: {
+        showMessage(information){
+            console.log(`Da App.Vue con allegria arriva ${information}`);
+        }
+    }
 }
 </script>
 
 <template>
-    <AppSearch />
+    <AppSearch @retrieve-input="showMessage"/>
     <AppMain />
 </template>
 
