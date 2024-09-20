@@ -1,9 +1,26 @@
 <script>
+import AppSearch from './components/AppSearch.vue';
+import AppMain from './components/AppMain.vue';
+import AppSearch from './components/AppSearch.vue';
+import AppMain from './components/AppMain.vue';
 
+export default {
+    components: {
+        AppSearch,
+        AppMain
+    },
+
+    data() {
+        return {
+        count: 0
+        }
+    } 
+}
 </script>
 
 <template>
-
+    <AppSearch />
+    <AppMain />
 </template>
 
 <style lang="scss">
