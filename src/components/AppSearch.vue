@@ -15,6 +15,7 @@ export default {
       console.log('Bottone Cliccato');
       console.log(store.searchedInput);
       this.$emit("retrieve-input", store.searchedInput);
+      this.getFilms()
     },
 
     //Inizio Chiamata API
@@ -22,12 +23,14 @@ export default {
       axios.get(this.apiUrl, {
         params: {
           api_key: "8e0805322dd3b50b2e8d4df4c08bfc3d",
-          query: ""
+          query: store.searchedInput,
       }})
-      .then(function (response) {
-        console.log(response);
+      .then((response) => {
+        //console.log(response.data.results);
+        store.findedFilms = response.data.results
+        console.log(store.findedFilms); //Inserisco i film con il campo di ricerca corretto nell'array
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       })
     }
