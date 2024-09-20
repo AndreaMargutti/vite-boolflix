@@ -16,11 +16,19 @@ export default {
     <li v-for="(film, i) in store.findedFilms" :key="i">
       {{ store.findedFilms[i].title }}
       {{ store.findedFilms[i].original_title }}
-      {{ store.findedFilms[i].original_language }}
+      <div id="lang-flag" v-if="store.findedFilms[i].original_language === 'en'">
+        <img src="../assets/img/uk_flag.svg" alt="uk-flag ">
+      </div>
+      <div id="lang-flag" v-else="store.findedFilms[i].original_language === 'it'">
+        <img src="../assets/img/ita_flag.png" alt="ita-flag">
+      </div>
       {{ store.findedFilms[i].vote_average }}
     </li>
   </ul>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  img {
+    width: 100px;
+  }
 </style>
