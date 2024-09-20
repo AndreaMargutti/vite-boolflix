@@ -1,9 +1,8 @@
 <script>
 import AppSearch from './components/AppSearch.vue';
 import AppMain from './components/AppMain.vue';
-import AppSearch from './components/AppSearch.vue';
-import AppMain from './components/AppMain.vue';
-
+import axios from 'axios';
+// Chiave API 8e0805322dd3b50b2e8d4df4c08bfc3d
 export default {
     components: {
         AppSearch,
