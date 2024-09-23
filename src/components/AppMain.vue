@@ -13,7 +13,8 @@ export default {
 <template>
   <section>
     <h1>Film</h1>
-    <ul v-if="store.findedFilms.length > 0">
+    <p>I Risultati trovati sono: {{ store.findedFilms.length }}</p>
+    <ul v-show="store.findedFilms.length > 0">
       <li v-for="(film, i ) in store.findedFilms" :key="i">
         {{ store.findedFilms[i].title }}
         {{ store.findedFilms[i].original_title }}
@@ -26,11 +27,11 @@ export default {
         {{ store.findedFilms[i].vote_average }}
       </li>
     </ul>
-    <p>I Risultati trovati sono: {{ store.findedFilms.length }}</p>
   </section>
   <section>
-  <h1>Serie TV</h1>
-    <ul>
+    <h1>Serie TV</h1>
+    <p>I Risultati trovati sono: {{ store.findedSeries.length }}</p>
+    <ul v-show="store.findedSeries.length > 0">
       <li v-for="(serie, j) in store.findedSeries" :key="j">
         {{ store.findedSeries[j].original_name }}
         <div id="lang-flag" v-if="store.findedSeries[j].original_language === 'en'">
@@ -42,7 +43,6 @@ export default {
         {{ store.findedSeries[j].vote_average }}
       </li>
     </ul>
-    <p>I Risultati trovati sono: {{ store.findedSeries.length }}</p>
   </section>
 </template>
 
