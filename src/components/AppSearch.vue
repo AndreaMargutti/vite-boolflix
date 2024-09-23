@@ -14,7 +14,6 @@ export default {
     clickButton(){
       console.log('Bottone Cliccato');
       console.log(store.searchedInput);
-      this.$emit("retrieve-input", store.searchedInput);
       this.getFilms()
     },
 

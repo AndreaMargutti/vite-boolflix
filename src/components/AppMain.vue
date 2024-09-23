@@ -13,7 +13,7 @@ export default {
 <template>
   <h1>Risultati di ricerca</h1>
   <ul>
-    <li v-for="(film, i) in store.findedFilms" :key="i">
+    <li v-for="(film, i ) in store.findedFilms" :key="i">
       {{ store.findedFilms[i].title }}
       {{ store.findedFilms[i].original_title }}
       <div id="lang-flag" v-if="store.findedFilms[i].original_language === 'en'">
