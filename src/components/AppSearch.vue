@@ -52,10 +52,6 @@ export default {
         console.log(error);
       })
     }
-  },
-
-  created(){
-    this.getSeries()
   }
 }
 
