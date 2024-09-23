@@ -6,7 +6,8 @@ export default {
   data() {
     return {
       store,
-      apiUrl: "https://api.themoviedb.org/3/search/movie?"
+      apiUrl: "https://api.themoviedb.org/3/search/movie?",
+      apiSeriesUrl: "https://api.themoviedb.org/3/search/tv"
     }
   },
 
@@ -14,7 +15,8 @@ export default {
     clickButton(){
       console.log('Bottone Cliccato');
       console.log(store.searchedInput);
-      this.getFilms()
+      this.getFilms();
+      this.getSeries();
     },
 
     //Inizio Chiamata API
@@ -27,16 +29,33 @@ export default {
       .then((response) => {
         //console.log(response.data.results);
         store.findedFilms = response.data.results
-        console.log(store.findedFilms); //Inserisco i film con il campo di ricerca corretto nell'array
+        //console.log(store.findedFilms); //Inserisco i film con il campo di ricerca corretto nell'array
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    },
+
+    getSeries(){
+      console.log("Ho recuperato le serie tv");
+      axios.get(this.apiSeriesUrl, {
+        params: {
+          api_key: "8e0805322dd3b50b2e8d4df4c08bfc3d",
+          query: store.searchedInput,
+      }})
+      .then((response) => {
+        //console.log(response.data.results);
+        store.findedSeries = response.data.results
+        console.log(response.data.results); //Inserisco i film con il campo di ricerca corretto nell'array
       })
       .catch((error) => {
         console.log(error);
       })
     }
   },
-  
+
   created(){
-    this.getFilms();
+    this.getSeries()
   }
 }
 

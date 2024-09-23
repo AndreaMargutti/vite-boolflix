@@ -20,7 +20,7 @@ export default {
 
 <template>
     <AppSearch/>
-    <AppMain />
+    <AppMain/>
 </template>
 
 <style lang="scss">
