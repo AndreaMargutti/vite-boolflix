@@ -14,7 +14,7 @@ export default {
 
   methods: {
     //Evento per il click del bottone
-    clickButton(){
+    getResults(){
       console.log('Bottone Cliccato');
       console.log(store.searchedInput);
       //faccio partire i metodi per film e serie tv
@@ -64,9 +64,9 @@ export default {
   <h1>SearchInput</h1>
   <div>
     <!--Input di ricerca-->
-    <input type="text" v-model="store.searchedInput" @keyup.enter="clickButton">
+    <input type="text" v-model="store.searchedInput" @keyup.enter="getResults">
     <!--Bottone che fa partire il metodo al suo click-->
-    <button @click="clickButton">Cerca</button>
+    <button @click="getResults">Cerca</button>
   </div>
 </template>
 
