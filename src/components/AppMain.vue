@@ -27,7 +27,7 @@ export default {
         <div id="lang-flag" v-else-if="film.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
           <img src="../assets/img/ita_flag.png" alt="ita-flag">
         </div>
-        {{ film.vote_average }} <!--Inserisco il voto del film-->
+        {{ Math.floor(film.vote_average) }} <!--Inserisco il voto del film-->
       </li>
     </ul>
   </section>
