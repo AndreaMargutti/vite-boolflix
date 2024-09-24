@@ -64,7 +64,7 @@ export default {
   <h1>SearchInput</h1>
   <div>
     <!--Input di ricerca-->
-    <input type="text" v-model="store.searchedInput">
+    <input type="text" v-model="store.searchedInput" @keyup.enter="clickButton">
     <!--Bottone che fa partire il metodo al suo click-->
     <button @click="clickButton">Cerca</button>
   </div>
