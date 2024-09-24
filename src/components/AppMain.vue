@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       store,
-      vote: Math.floor(store.findedFilms.vote_average / 2)
+      vote: Math.floor(store.findedFilms[0].vote_average / 2)
     }
   },
 }
@@ -33,7 +33,9 @@ export default {
           <span id="lang-flag" v-else-if="film.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
             <img src="../assets/img/ita_flag.png" alt="ita-flag">
           </span>
-          <p class="card-text">Voto: {{ Math.floor(film.vote_average / 2) }}</p>
+          <div id="ratings">
+            <i class="fa-star" v-for="n in 5" :class="n <= this.vote ? 'fa-solid' : 'fa-regular'" :key="n"></i>
+          </div>
         </div>
       </div>
     </div>
