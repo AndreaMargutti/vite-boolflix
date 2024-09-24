@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      vote: Math.floor(store.findedFilms.vote_average / 2)
     }
   },
 }
@@ -27,7 +28,7 @@ export default {
         <div id="lang-flag" v-else-if="film.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
           <img src="../assets/img/ita_flag.png" alt="ita-flag">
         </div>
-        {{ Math.floor(film.vote_average) }} <!--Inserisco il voto del film-->
+        {{ Math.floor(film.vote_average / 2) }} <!--Inserisco il voto del film-->
       </li>
     </ul>
   </section>
@@ -55,5 +56,9 @@ export default {
 <style lang="scss" scoped>
   img {
     width: 100px;
+  }
+
+  .voted {
+    color: orange;
   }
 </style>

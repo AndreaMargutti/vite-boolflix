@@ -61,14 +61,26 @@ export default {
 </script>
 
 <template>
-  <h1>SearchInput</h1>
-  <div>
-    <!--Input di ricerca-->
-    <input type="text" v-model="store.searchedInput" @keyup.enter="getResults">
-    <!--Bottone che fa partire il metodo al suo click-->
-    <button @click="getResults">Cerca</button>
-  </div>
+  <header>
+    <h1>Boolfix</h1>
+    <div>
+      <!--Input di ricerca-->
+      <input type="text" v-model="store.searchedInput" @keyup.enter="getResults">
+      <!--Bottone che fa partire il metodo al suo click-->
+      <button @click="getResults">Cerca</button>
+    </div>
+  </header>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  header {
+    padding: 10px;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      color: red;
+    }
+  }
 </style>
