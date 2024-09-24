@@ -8,7 +8,8 @@ export default {
       //importo la store
       store,
       apiUrl: "https://api.themoviedb.org/3/search/movie?", //link per API film
-      apiSeriesUrl: "https://api.themoviedb.org/3/search/tv" //link per API serie tv
+      apiSeriesUrl: "https://api.themoviedb.org/3/search/tv", //link per API serie tv
+      imgUrl: "https://image.tmdb.org/t/p/w342",
     }
   },
 
@@ -54,7 +55,7 @@ export default {
       .catch((error) => {
         console.log(error);
       })
-    }
+    },
   }
 }
 

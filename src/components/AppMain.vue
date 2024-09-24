@@ -6,7 +6,12 @@ export default {
     return {
       store,
     }
-  }
+  },
+  methods: {
+    getImgPaths: function(imgPath){
+      return new URL(imgPath, import.meta.url).href;
+    }
+  },
 }
 </script>
 
@@ -18,6 +23,7 @@ export default {
     <p>I Risultati trovati sono: {{ store.findedFilms.length }}</p>
     <ul v-show="store.findedFilms.length > 0"> <!--Mostriamo la lista sono se sono stati trovati dei risultati-->
       <li v-for="(film, i ) in store.findedFilms" :key="i"> <!--Generiamo un li per ogni elemento dell'array-->
+        <img :src="https://image.tmdb.org/t/p/w342/{{store.findedFilms[i].backdrop_path}}" alt="">
         {{ store.findedFilms[i].title }} <!--Inseriamo il titolo del film-->
         {{ store.findedFilms[i].original_title }} <!--Inseriamo il titolo originale-->
         <div id="lang-flag" v-if="store.findedFilms[i].original_language === 'en'"> <!--Se lingua inglese allora mettimi la bandiera inglese-->

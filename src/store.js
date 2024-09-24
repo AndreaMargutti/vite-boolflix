@@ -5,5 +5,7 @@ export const store = reactive({
     searchedInput: "",
     //Creo un'array vuoto per inserire i film trovati dalla ricerca
     findedFilms: [],
-    findedSeries: []
+    findedSeries: [],
+    //Creo array dove andranno inserite gli url delle immagini
+    covers: [],
 })
