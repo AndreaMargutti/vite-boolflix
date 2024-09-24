@@ -16,49 +16,80 @@ export default {
   <section>
     <h1>Film</h1>
     <!--Creo un "contatore per dire quanti risultati sono stati trovati"-->
-    <p>I Risultati trovati sono: {{ store.findedFilms.length }}</p>
-    <ul v-show="store.findedFilms.length > 0"> <!--Mostriamo la lista sono se sono stati trovati dei risultati-->
-      <li v-for="(film, i ) in store.findedFilms" :key="i"> <!--Generiamo un li per ogni elemento dell array-->
-        <img :src="`https://image.tmdb.org/t/p/w342${film.backdrop_path}`" alt="cover-film"> <!--Inserisco immagine-->
-        {{ film.title }} <!--Inseriamo il titolo del film-->
-        {{ film.original_title }} <!--Inseriamo il titolo originale-->
-        <div id="lang-flag" v-if="film.original_language === 'en'"> <!--Se lingua inglese allora mettimi la bandiera inglese-->
-          <img src="../assets/img/uk_flag.svg" alt="uk-flag ">
+    <p>I Risultati trovati sono: <span>{{ store.findedFilms.length }}</span></p>
+    <div class="card mb-3" style="max-width: 540px;" v-show="store.findedFilms.length > 0"
+      v-for="(film, i ) in store.findedFilms" :key="i">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img :src="`https://image.tmdb.org/t/p/w342${film.backdrop_path}`" class="img-fluid rounded-start" alt="cover-film">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Titolo: {{ film.title }}</h5>
+          <p class="card-tex">Titolo Originale: {{ film.original_title }}</p>
+          <span id="lang-flag" v-if="film.original_language === 'en'"> <!--Se lingua inglese allora mettimi la bandiera inglese-->
+            <img src="../assets/img/uk_flag.svg" alt="uk-flag ">
+          </span>
+          <span id="lang-flag" v-else-if="film.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
+            <img src="../assets/img/ita_flag.png" alt="ita-flag">
+          </span>
+          <p class="card-text">Voto: {{ Math.floor(film.vote_average / 2) }}</p>
         </div>
-        <div id="lang-flag" v-else-if="film.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
-          <img src="../assets/img/ita_flag.png" alt="ita-flag">
-        </div>
-        {{ Math.floor(film.vote_average / 2) }} <!--Inserisco il voto del film-->
-      </li>
-    </ul>
+      </div>
+    </div>
+    </div>
   </section>
+
   <!--Inizio sezione serie tv-->
   <section>
     <h1>Serie TV</h1>
     <!--Creo un "contatore per dire quanti risultati sono stati trovati"-->
     <p>I Risultati trovati sono: {{ store.findedSeries.length }}</p>
-    <ul v-show="store.findedSeries.length > 0">  <!--Mostriamo la lista sono se sono stati trovati dei risultati-->
-      <li v-for="(serie, j) in store.findedSeries" :key="j"> <!--Generiamo un li per ogni elemento dell'array-->
-        <img :src="`https://image.tmdb.org/t/p/w342${serie.backdrop_path}`" alt="cover-serie"> <!--Inserisco copertina serie tv-->
-        {{ serie.original_name }} <!--Inseriamo il titolo della serie tv-->
-        <div id="lang-flag" v-if="serie.original_language === 'en'"> <!--Se lingua inglese allora mettimi la bandiera inglese-->
-          <img src="../assets/img/uk_flag.svg" alt="uk-flag ">
+    <div class="card mb-3" style="max-width: 540px;" v-show="store.findedSeries.length > 0"
+          v-for="(serie, j) in store.findedSeries" :key="j">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img :src="`https://image.tmdb.org/t/p/w342${serie.backdrop_path}`" class="img-fluid rounded-start" alt="cover-serie">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Titolo: {{ serie.original_name }}</h5>
+              <span id="lang-flag" v-if="serie.original_language === 'en'"> <!--Se lingua inglese allora mettimi la bandiera inglese-->
+                <img src="../assets/img/uk_flag.svg" alt="uk-flag ">
+              </span>
+              <span id="lang-flag" v-else-if="serie.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
+                <img src="../assets/img/ita_flag.png" alt="ita-flag">
+              </span>
+              <p class="card-text">Voto: {{ Math.floor(serie.vote_average / 2) }}</p>
+            </div>
+          </div>
         </div>
-        <div id="lang-flag" v-else-if="serie.original_language === 'it'"> <!--Se lingua italiana allora metti la bandiera italiana-->
-          <img src="../assets/img/ita_flag.png" alt="ita-flag">
-        </div>
-        {{ serie.vote_average }} <!--Inserisco il voto della serie tv-->
-      </li>
-    </ul>
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+
+section {
+  padding: 10px;
+  h1 {
+    color: red;
+  }
+  p {
+    font-weight: bold;
+    span {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+#lang-flag {
   img {
     width: 100px;
   }
+}
 
-  .voted {
-    color: orange;
-  }
+  // .voted {
+  //   color: orange;
+  // }
 </style>
